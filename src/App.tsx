@@ -26,6 +26,7 @@ import {
 // App Components
 import DocumentUploader from './document_upload/DocumentUploader';
 import DocumentList from './document_list/DocumentList';
+import DocumentVerifier from './document_verification/DocumentVerifier';
 
 const drawerWidth = 240;
 
@@ -75,7 +76,6 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
   },
   drawerIcons: {
     fontSize: 30,
@@ -121,7 +121,7 @@ const App = () => {
             </ListItem>
           </List>
           <List>
-            <ListItem button component={Link} to="/verify-documents" key={1}>
+            <ListItem button component={Link} to="/documents-list" key={1}>
               <ListItemIcon> <Icon className={classes.drawerIcons}>fact_check</Icon></ListItemIcon>
               <ListItemText primary={`Document Verification`} />
             </ListItem>
@@ -132,8 +132,11 @@ const App = () => {
             <Route path="/" exact>
               <DocumentUploader />
             </Route>
-            <Route path="/verify-documents" exact>
+            <Route path="/documents-list" exact>
               <DocumentList />
+            </Route>
+            <Route path="/verify-documents/:id" exact>
+              <DocumentVerifier />
             </Route>
           </Switch>
         </main>
